@@ -8,6 +8,12 @@
 
 <div fxLayout="row" fxLayoutAlign="space-around" class="calender">
   <div class="day-name" *ngFor="let item of weeks">
-    <div>{{item}}</div>
+    <div class="col-item">{{item}}</div>
   </div>
+
+
+  <div class="day-dates" *ngFor="let item of weeks">
+    <div class="dates-item">{{item}}</div>
+  </div>
+
 </div>

@@ -5,10 +5,35 @@ mat-grid-tile {
 
 
 .calender {
-  // display: flex;
+  display: flex;
   border: 1px solid black;
-  // justify-content: space-around;
+  justify-content: space-around;
+  width: 100%;
+
   .day-name {
     border: 1px solid black;
+    width: 100%;
+    .col-item {
+      display: flex;
+      // margin: auto;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 50px;
+    }
   }
+
+  .day-name {
+    border: 1px solid black;
+    width: 100%;
+    .col-item {
+      display: flex;
+      // margin: auto;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 50px;
+    }
+  }
+
 }
