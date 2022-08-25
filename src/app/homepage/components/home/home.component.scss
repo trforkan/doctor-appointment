@@ -1,0 +1,28 @@
+.page-layout {
+  width: 100%;
+
+  .container {
+    margin: auto;
+    margin-top: 16px;
+    width: 70%;
+    border: 1px solid #adaaaa;
+
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 15px;
+      .create-button {
+        background-color: #3F51B5;
+        box-shadow: #adaaaa;
+        height: 40px;
+        color: white;
+      }
+
+      // ::ng-deep .button {
+      //   height: 20px;
+      // }
+
+    }
+  }
+
+}

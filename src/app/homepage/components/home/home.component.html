@@ -1,0 +1,25 @@
+<div class="page-layout">
+
+  <div class="container">
+
+    <div class="container__title" >
+
+      <mat-form-field appearance="fill">
+        <mat-label></mat-label>
+        <mat-select [(value)]="selectedMonth" (selectionChange)="display()">
+          <mat-option [value]="month" *ngFor="let month of months index as i">{{month}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h1>{{selectedMonth}}, {{presentYear}}</h1>
+
+      <button class="create-button" mat-raised-button>Create Appoinment</button>
+
+    </div>
+
+    <router-outlet></router-outlet>
+    <!-- <app-calender></app-calender> -->
+
+  </div>
+
+</div>

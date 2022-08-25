@@ -1,0 +1,13 @@
+<p>{{monthName}}</p>
+
+
+<!-- <mat-grid-list  cols="7" row="6" rowHeight="3:2" >
+  <mat-grid-tile *ngFor="let item of lists">{{item}}</mat-grid-tile>
+</mat-grid-list> -->
+
+
+<div fxLayout="row" fxLayoutAlign="space-around" class="calender">
+  <div class="day-name" *ngFor="let item of weeks">
+    <div>{{item}}</div>
+  </div>
+</div>
