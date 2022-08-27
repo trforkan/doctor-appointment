@@ -9,30 +9,80 @@ import { first } from 'rxjs';
 })
 export class CalenderComponent implements OnInit {
 
-  monthName?: string;
+  monthIndex?: number;
 
   weeks = [
-    "Saturday",
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday"
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
   ];
-  
 
-  lists = [
-    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
-  ]
+  counter(i: number) {
+    return new Array(i);
+  }
 
-  constructor(private route: ActivatedRoute) { }
+  weekIndex = 0;
+  weekName = this.weeks[this.weekIndex];
+  currentDate: number = 0;
+
+
+
+
+  dateRow = [
+    1,2,3,4,5,6
+  ];
+
+  lists : any[]=[];
+
+  firstPos?: number;
+  lastPos?: number;
+
+  constructor(public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(({id}) => {
       console.log(id);
-      this.monthName=id;
-    })
+      this.monthIndex=id;
+      this.getAllDaysInMonth(2022,(<number>this.monthIndex-1));
+    });
+
+    this.getAllDaysInMonth(2022,(<number>this.monthIndex-1));
+    this.weekIndex=this.lists[0].getDay();
+    console.log("lists=",this.lists);
+    // this.firstPos= this.lists[0].getDay();
+    // this.lastPos = this.lists[this.lists.length].getDay();
+    // console.log(this.firstPos," ", this.lastPos)
+  }
+
+
+  getAllDaysInMonth(year:number, month:number) {
+    const date = new Date(year, month, 1);
+    // console.log(year);
+    const dates = [];
+
+    while (date.getMonth() === month) {
+      dates.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+
+    return this.lists=dates;
+  }
+
+  dateIncrement() {
+    this.currentDate++;
+    this.weekIndex++;
+    // this.weekIndex%=7;
+    console.log(this.currentDate, this.weekIndex);
+    // if(this.currentDate>this.lists.length+1)this.currentDate=0;
+  }
+
+
+  getDay(number: number) {
+    return this.lists[number-1].getDay();
   }
 
 }

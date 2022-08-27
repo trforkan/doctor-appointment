@@ -1,0 +1,28 @@
+.dialog-layout {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 550px;
+    background-color: white;
+
+    position: sticky;
+    overflow-y: scroll;
+
+    mat-form-field {
+        margin-top: 20px;
+    }
+
+    button {
+        width: 150px;
+        background-color: #3F51B5;
+        color: white;
+        margin-right: 20px;
+    }
+
+    .radio-group {
+
+        display: flex;
+        flex-direction: column;
+    }
+}

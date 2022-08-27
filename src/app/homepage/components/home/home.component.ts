@@ -1,5 +1,8 @@
+import { DialogboxComponent } from './../dialogbox/dialogbox.component';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-home',
@@ -33,23 +36,37 @@ export class HomeComponent implements OnInit {
     "Friday"
   ]
 
+
+
   selectedMonth?: string;
+  selectedMonthIndex?: number;
   presentYear?: number;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public dialog: Dialog) { }
 
   ngOnInit(): void {
     // console.log(new Date().getDay());
     this.presentYear = new Date().getFullYear();
-    this.selectedMonth = this.months[new Date().getMonth()];
-    
-    this.router.navigateByUrl(`/month/${this.selectedMonth}`);
+
+    this.selectedMonthIndex = new Date().getMonth();
+    this.selectedMonth = this.months[this.selectedMonthIndex];
+    console.log(this.selectedMonthIndex);
+
+    this.router.navigateByUrl(`/month/${this.selectedMonthIndex+1}`);
   }
+
+
   display() {
-    // console.log(this.selectedMonth);
+    console.log(this.selectedMonth);
+    this.selectedMonthIndex = this.months.indexOf(<string>this.selectedMonth);
     const val='/month/'+'olaf';
-    // console.log(`/month/${this.selectedMonth}`);
-    this.router.navigateByUrl(`/month/${this.selectedMonth}`);
+    console.log(`/month/${this.selectedMonth}`);
+    console.log(this.selectedMonthIndex);
+    this.router.navigateByUrl(`/month/${this.selectedMonthIndex+1}`);
+  }
+
+  openDialog() {
+    this.dialog.open(DialogboxComponent);
   }
 
 }

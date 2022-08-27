@@ -1,4 +1,4 @@
-<p>{{monthName}}</p>
+<!-- <p>{{monthName}}</p> -->
 
 
 <!-- <mat-grid-list  cols="7" row="6" rowHeight="3:2" >
@@ -6,14 +6,21 @@
 </mat-grid-list> -->
 
 
-<div fxLayout="row" fxLayoutAlign="space-around" class="calender">
-  <div class="day-name" *ngFor="let item of weeks">
-    <div class="col-item">{{item}}</div>
+<div class="calender">
+
+  <div class="calender__day">
+    <div class="day-name" *ngFor="let item of weeks">
+      <div class="col-item">{{item}}</div>
+    </div>
   </div>
 
+  <div class="calender__date">
+    <div class="day-item" *ngFor="let item of counter(42); index as i">
+      <div class="day-date">
 
-  <div class="day-dates" *ngFor="let item of weeks">
-    <div class="dates-item">{{item}}</div>
+      </div>
+    </div>
   </div>
+
 
 </div>

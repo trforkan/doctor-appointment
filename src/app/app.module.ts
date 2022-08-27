@@ -8,19 +8,24 @@ import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './homepage/components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalenderComponent } from './calender/calender.component';
+import { DialogboxComponent } from './homepage/components/dialogbox/dialogbox.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    CalenderComponent
+    CalenderComponent,
+    DialogboxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

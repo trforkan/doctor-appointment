@@ -1,0 +1,53 @@
+<div class="dialog-layout" [formGroup]="appointment" (ngSubmit)="display()">
+
+  <h3>Create Appointment</h3>
+
+    <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input type="text" formControlName="firstName" matInput requied>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input type="text" formControlName="lastName" matInput required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email address</mat-label>
+        <input type="text" formControlName="email" matInput required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input type="text" formControlName="age" matInput>
+    </mat-form-field>
+
+    <div class="radio-group">
+        <mat-label>Gender</mat-label>
+        <mat-radio-group [value]="sex" formControlName="gender">
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Appointment Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>Appointment Time</mat-label>
+        <input formControlName="time" matTimepicker>
+        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+    </mat-form-field>
+
+    <div>
+      <button mat-raised-button type="submit" (click)="display()">Save</button>
+
+    </div>
+
+</div>

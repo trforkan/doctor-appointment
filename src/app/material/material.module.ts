@@ -34,6 +34,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTimepickerModule } from 'mat-timepicker';
+
 
 const Material = [
   MatAutocompleteModule,
@@ -72,6 +74,7 @@ const Material = [
   MatTooltipModule,
   MatTreeModule,
   MatFormFieldModule,
+  MatTimepickerModule
 ];
 
 @NgModule({
