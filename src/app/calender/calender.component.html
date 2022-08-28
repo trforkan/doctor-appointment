@@ -17,7 +17,8 @@
   <div class="calender__date">
     <div class="day-item" *ngFor="let item of counter(42); index as i">
       <div class="day-date" *ngIf="(i%7 == firstPos && currentDate <= lists.length)">
-        {{currentDate}}=={{firstPos}}
+        {{currentDate}}
+        <ng-container *ngIf="flag? dateIncrement(): display()"></ng-container>
         <!-- <ng-template #callfunction>{{dateIncrement()}}</ng-template> -->
         <!-- <div dateIncrement()></div> -->
       </div>

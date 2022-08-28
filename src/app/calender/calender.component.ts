@@ -11,7 +11,7 @@ export class CalenderComponent implements OnInit {
 
   monthIndex?: number;
 
-
+  flag=true;
 
   weeks = [
     "Sun",
@@ -46,6 +46,10 @@ export class CalenderComponent implements OnInit {
   constructor(public route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.currentDate=0;
+    this.firstPos=1;
+    this.lastPos=1;
+    
     this.route.params.subscribe(({id}) => {
       console.log("params=",id);
       this.lists = this.getAllDaysInMonth(2022,id-1);
@@ -74,7 +78,7 @@ export class CalenderComponent implements OnInit {
     this.currentDate++;
     this.firstPos++;
     console.log(this.currentDate," ",this.firstPos);
-    // this.firstPos%=7;
+    this.firstPos%=7;
     // this.weekIndex++;
     // this.weekIndex%=7;
     // console.log(this.currentDate, this.weekIndex);
@@ -84,6 +88,9 @@ export class CalenderComponent implements OnInit {
 
   getDay(number: number) {
     return this.lists[number-1].getDay();
+  }
+  display() {
+    console.log(this.currentDate);
   }
 
 }
