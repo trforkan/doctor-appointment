@@ -30,64 +30,80 @@ export class CalenderComponent implements OnInit {
     return new Array(i);
   }
 
-  weekIndex = 0;
-  weekName = this.weeks[this.weekIndex];
-  currentDate: number = 1;
-
-
-
-
   dateRow = [
     1,2,3,4,5,6
   ];
 
   lists: any[] = [
-
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
+    { Dates: [] },
   ];
+
 
 
   temporaryArray = [
     this.getAllDaysInMonth(new Date().getFullYear(),0),
-    this.getAllDaysInMonth(2022,1),
-    this.getAllDaysInMonth(2022,2),
-    this.getAllDaysInMonth(2022,3),
-    this.getAllDaysInMonth(2022,4),
-    this.getAllDaysInMonth(2022,5),
-    this.getAllDaysInMonth(2022,6),
-    this.getAllDaysInMonth(2022,7),
-    this.getAllDaysInMonth(2022,8),
-    this.getAllDaysInMonth(2022,9),
-    this.getAllDaysInMonth(2022,10),
-    this.getAllDaysInMonth(2022,11)
+    this.getAllDaysInMonth(new Date().getFullYear(),1),
+    this.getAllDaysInMonth(new Date().getFullYear(),2),
+    this.getAllDaysInMonth(new Date().getFullYear(),3),
+    this.getAllDaysInMonth(new Date().getFullYear(),4),
+    this.getAllDaysInMonth(new Date().getFullYear(),5),
+    this.getAllDaysInMonth(new Date().getFullYear(),6),
+    this.getAllDaysInMonth(new Date().getFullYear(),7),
+    this.getAllDaysInMonth(new Date().getFullYear(),8),
+    this.getAllDaysInMonth(new Date().getFullYear(),9),
+    this.getAllDaysInMonth(new Date().getFullYear(),10),
+    this.getAllDaysInMonth(new Date().getFullYear(),11)
   ]
 
   firstPos: number=1;
-  lastPos: number=1;
   month: number = new Date().getMonth();
 
-  constructor(public route: ActivatedRoute , public cdrf: ChangeDetectorRef) { }
+  constructor(public route: ActivatedRoute , public cdrf: ChangeDetectorRef) {
+
+
+    for(let i=0; i<12; i++) {
+      let curr=1;
+      for(let a=0; a<42; a++) {
+
+        if(a>=this.temporaryArray[i][0].getDay() && curr <= this.temporaryArray[i].length){
+          this.lists[i].Dates.push(curr);
+          curr++;
+        }
+        else{
+          this.lists[i].Dates.push(null);
+        }
+      }
+    }
+
+  }
 
   ngOnInit(): void {
-    // this.dateIncrement();
 
-
-    console.log(this.temporaryArray);
-    this.currentDate=1;
-    this.firstPos=1;
-    this.lastPos=1;
 
     this.route.params.subscribe(({id}) => {
       console.log("params=",id);
       this.month=id-1;
-      console.log(this.temporaryArray);
-      // this.lists=(this.getAllDaysInMonth(2022,id-1));
-      // this.lists=this.temporaryArray[id-1];
-      // this.temporaryArray[id]=(this.getAllDaysInMonth(2022,id-1))
-      // console.log("list=",this.lists);
+
       this.firstPos = this.temporaryArray[this.month][0].getDay();
-      console.log("fpos=",this.firstPos)
-      // this.cdrf.detectChanges();
+
+      // console.log(this.month);
+      console.log(this.month ," month ",this.lists[this.month]);
+
     });
+
+
+
   }
 
 
@@ -104,24 +120,8 @@ export class CalenderComponent implements OnInit {
   }
 
 
-
-  dateIncrement() {
-    this.currentDate++;
-    this.firstPos++;
-    console.log(this.currentDate," ",this.firstPos);
-    this.firstPos%=7;
-    // this.weekIndex++;
-    // this.weekIndex%=7;
-    // console.log(this.currentDate, this.weekIndex);
-    // if(this.currentDate>this.lists.length+1)this.currentDate=0;
-  }
-
-
   getDay(number: number) {
     return this.lists[number-1].getDay();
-  }
-  display() {
-    console.log(this.currentDate);
   }
 
 }
