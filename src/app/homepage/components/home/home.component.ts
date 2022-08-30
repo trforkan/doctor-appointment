@@ -11,6 +11,9 @@ import { Dialog } from '@angular/cdk/dialog';
 })
 export class HomeComponent implements OnInit {
 
+
+  public dialogBox = true;
+
   months = [
     "January",
     "February",
@@ -45,7 +48,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, public dialog: Dialog) { }
 
   ngOnInit(): void {
-    // console.log(new Date().getDay());
+    console.log(this.dialogBox);
     this.presentYear = new Date().getFullYear();
 
     this.selectedMonthIndex = new Date().getMonth();

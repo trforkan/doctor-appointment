@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs';
 
@@ -8,6 +8,9 @@ import { first } from 'rxjs';
   styleUrls: ['./calender.component.scss']
 })
 export class CalenderComponent implements OnInit {
+
+
+
 
   monthIndex?: number;
 
@@ -38,24 +41,52 @@ export class CalenderComponent implements OnInit {
     1,2,3,4,5,6
   ];
 
-  lists : any[]=[];
+  lists: any[] = [
+
+  ];
+
+
+  temporaryArray = [
+    this.getAllDaysInMonth(new Date().getFullYear(),0),
+    this.getAllDaysInMonth(2022,1),
+    this.getAllDaysInMonth(2022,2),
+    this.getAllDaysInMonth(2022,3),
+    this.getAllDaysInMonth(2022,4),
+    this.getAllDaysInMonth(2022,5),
+    this.getAllDaysInMonth(2022,6),
+    this.getAllDaysInMonth(2022,7),
+    this.getAllDaysInMonth(2022,8),
+    this.getAllDaysInMonth(2022,9),
+    this.getAllDaysInMonth(2022,10),
+    this.getAllDaysInMonth(2022,11)
+  ]
 
   firstPos: number=1;
   lastPos: number=1;
+  month: number = new Date().getMonth();
 
-  constructor(public route: ActivatedRoute) { }
+  constructor(public route: ActivatedRoute , public cdrf: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.currentDate=0;
+    // this.dateIncrement();
+
+
+    console.log(this.temporaryArray);
+    this.currentDate=1;
     this.firstPos=1;
     this.lastPos=1;
-    
+
     this.route.params.subscribe(({id}) => {
       console.log("params=",id);
-      this.lists = this.getAllDaysInMonth(2022,id-1);
-      console.log(this.lists);
-      this.firstPos = this.lists[0].getDay();
-      console.log(this.firstPos)
+      this.month=id-1;
+      console.log(this.temporaryArray);
+      // this.lists=(this.getAllDaysInMonth(2022,id-1));
+      // this.lists=this.temporaryArray[id-1];
+      // this.temporaryArray[id]=(this.getAllDaysInMonth(2022,id-1))
+      // console.log("list=",this.lists);
+      this.firstPos = this.temporaryArray[this.month][0].getDay();
+      console.log("fpos=",this.firstPos)
+      // this.cdrf.detectChanges();
     });
   }
 

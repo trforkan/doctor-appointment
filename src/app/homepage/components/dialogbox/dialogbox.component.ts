@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { HomeComponent } from './../home/home.component';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { timeInterval } from 'rxjs';
 // import { AmazingTimePickerService } from 'amazing-time-picker';
 
@@ -10,6 +12,7 @@ import { timeInterval } from 'rxjs';
 })
 export class DialogboxComponent implements OnInit {
 
+  // @Output() public closeDialogbox = new EventEmitter<boolean>();
 
   sex = "Male";
 
@@ -34,4 +37,11 @@ export class DialogboxComponent implements OnInit {
     console.log(this.appointment.value);
     alert("request successful");
   }
+
+  // emitData() {
+  //   console.log("tapped");
+  //   this.closeDialogbox.emit(false);
+
+  // }
+
 }
